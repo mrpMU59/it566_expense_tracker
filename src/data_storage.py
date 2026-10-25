@@ -19,3 +19,7 @@ def read_expenses(filename):
     except FileNotFoundError:
         print(filename, ": not found")
         return [] # Empty list
+
+    except json.JSONDecodeError: # https://www.geeksforgeeks.org/python/json-parsing-errors-in-python/
+        print(filename, ": is an invalid JSON file")
+        return [] # Empty list
