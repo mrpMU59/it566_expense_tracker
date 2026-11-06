@@ -45,4 +45,12 @@ def add_expense(expenses):
     description = input("Description of expense: ")
     amount = ask_for_amount()
 
-    
+    expense = { # Computer Scripting Techniques with Python (1st ed.), Ch 15.1.2
+        "date": date,
+        "category": category,
+        "description": description,
+        "amount": amount,
+    }
+
+    expenses.append(expense)
+    print("Expense added!")
