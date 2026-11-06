@@ -24,3 +24,13 @@ def ask_for_date(prompt):
             print("Please use the format YYYY-MM-DD, for example 2026-09-23.")
 
 
+""" Function keeps asking for an amount of money until the user inputs a valid number. """
+def ask_for_amount():
+    while True:
+        text = input("Amount: ")
+        try:
+            return float(text)
+
+        except ValueError:
+            print("Please enter a number, for example 13.50.")
+
