@@ -34,3 +34,15 @@ def ask_for_amount():
         except ValueError:
             print("Please enter a number, for example 13.50.")
 
+
+""" Function asks the user for details about the new expense and adds it to the list. """
+def add_expense(expenses):
+    date = ""
+    while date == "":
+        date = ask_for_date("Date (YYYY-MM-DD): ")
+    
+    category = input("Category: ")
+    description = input("Description of expense: ")
+    amount = ask_for_amount()
+
+    
