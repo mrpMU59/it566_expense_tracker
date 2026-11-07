@@ -97,3 +97,52 @@ def show_menu():
     print("6. Quit")
 
 
+def main():
+    expenses = [] # list that holds all the expenses
+
+    while True:
+        show_menu()
+        choice = input("Choose an option (1-6): ")
+
+        if choice == "1": # Add an expense
+            add_expense(expenses)
+
+        elif choice == "2": # View expenses (with optional filters)
+            start, end, category = ask_for_filters()
+            matches = filter_expenses(expenses, start, end, category)
+            print_expenses(matches)
+
+        elif choice == "3": # Open an expense file
+            filename = input("File to open (press Enter for expenses.json): ")
+            if filename == "":
+                filename = DEFAULT_FILE
+            expenses = read_expenses(filename)
+            print("Loaded", len(expenses), "expenses.")
+
+        elif choice == "4": # Save expenses to a file
+            if filename == "":
+                filename = DEFAULT_FILE
+
+            store_expenses(expenses, filename)
+            print("Saved", len(expenses), "expenses.")
+
+        elif choice == "5": # Export expenses to CSV
+            filename = input("CSV file name (press Enter for expenses.csv): ")
+            if filename == "":
+                filename = "expenses.csv"
+
+            start, end, category = ask_for_filters()
+            matches = filter_expenses(expenses, start, end, category)
+            export_to_csv(matches, filename)
+            print("Exported", len(matches), "expenses to", filename)
+
+        elif choice == "6": # Quit
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please type a number from 1 to 6.")
+
+
+if __name__ == "__main__":
+    main()
