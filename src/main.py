@@ -84,3 +84,16 @@ def ask_for_filters():
     category = input("Category: ").strip() # https://docs.python.org/3/builtins/stdtypes.html#str.strip
     return start, end, category
 
+
+""" Function shows the menu. """
+def show_menu():
+    print()
+    print("===== Expense Tracker =====")
+    print("1. Add an expense")
+    print("2. View expenses (with optional filters)")
+    print("3. Open an expense file")
+    print("4. Save expenses to a file")
+    print("5. Export expenses to CSV (for Excel)")
+    print("6. Quit")
+
+
