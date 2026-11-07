@@ -75,3 +75,12 @@ def print_expenses(expenses):
     print("-" * 60)
     print(f"Total: {total:.2f}")
 
+
+""" Function asks the user for filter options and returns them. """
+def ask_for_filters():
+    print("Leave a filter blank to skip it.")
+    start = ask_for_date("Start date (YYYY-MM-DD): ")
+    end = ask_for_date("End date (YYYY-MM-DD): ")
+    category = input("Category: ").strip() # https://docs.python.org/3/builtins/stdtypes.html#str.strip
+    return start, end, category
+
