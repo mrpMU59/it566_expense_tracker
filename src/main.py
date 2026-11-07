@@ -1,5 +1,7 @@
 """ Expense tracker application. """
 
+import os
+
 from datetime import datetime # https://docs.python.org/3/library/datetime.html#available-types
 
 from store_data import store_expenses, read_expenses
@@ -120,6 +122,7 @@ def main():
             print("Loaded", len(expenses), "expenses.")
 
         elif choice == "4": # Save expenses to a file
+            filename = input("Save as (press Enter for expenses.json): ")
             if filename == "":
                 filename = DEFAULT_FILE
 
@@ -134,7 +137,8 @@ def main():
             start, end, category = ask_for_filters()
             matches = filter_expenses(expenses, start, end, category)
             export_to_csv(matches, filename)
-            print("Exported", len(matches), "expenses to", filename)
+            print("Exported", len(matches), "expenses to", os.path.abspath(filename)) # https://docs.python.org/3/library/os.path.html#os.path.abspath
+            #print("Exported", len(matches), "expenses to", filename)
 
         elif choice == "6": # Quit
             print("Goodbye!")
