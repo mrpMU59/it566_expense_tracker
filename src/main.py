@@ -54,3 +54,24 @@ def add_expense(expenses):
 
     expenses.append(expense)
     print("Expense added!")
+
+
+""" Function prints a list of expenses and the total. """
+def print_expenses(expenses):
+    if len(expenses) == 0:
+        print("No expenses to show.")
+        return
+
+    print()
+    print("Date         Category            Description         Amount")
+    print("-" * 60)
+
+    total = 0
+    for expense in expenses:
+        print(f"{expense['date']:<12}{expense['category']:<16}"
+              f"{expense['description']:<20}{expense['amount']:>8.2f}") # https://www.geeksforgeeks.org/python/string-alignment-in-python-f-string/
+        total = total + expense["amount"]
+
+    print("-" * 60)
+    print(f"Total: {total:.2f}")
+
