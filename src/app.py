@@ -109,3 +109,15 @@ class ExpenseTrackerApp:
         except OSError as error:
             print("Could not save file: ", error)
 
+    def export_csv(self):
+        filename = self.ask_filename("CSV file name", DEFAULT_CSV)
+        start, end, category = self.ask_filters()
+        matches = self.manager.filter(start, end, category)
+
+        try:
+            CSVExporter(filename).export(matches)
+            print(f"Exported {len(matches)} expenses to {os.path.abspath(filename)}") # https://docs.python.org/3/library/os.path.html#os.path.abspath
+        except OSError as error:
+            print("Could not export: ", error)
+
+    
