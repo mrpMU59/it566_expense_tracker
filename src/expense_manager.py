@@ -39,4 +39,8 @@ class ExpenseManager:
         """ Adds up the expenses amount in a list. """
         return sum(expense.amount for expense in expenses)
 
+    def __len__(self): # https://www.geeksforgeeks.org/python/python-__len__-magic-method/
+        """ When len(manager) is written, gets the number of expenses. """
+        return len(self.expenses)
+
     
