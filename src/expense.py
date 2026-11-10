@@ -16,4 +16,13 @@ class Expense:
             "amount": self.amount,
         }
 
+    @classmethod
+    def from_dict(cls, data): # Creates an Expense from a dictionary
+        return cls(
+            date.fromisoformat(data["date"]), # https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat
+            data["category"],
+            data["description"],
+            float(data["amount"]),
+        )
+
     
