@@ -34,4 +34,9 @@ class ExpenseManager:
 
         return results
 
+    @staticmethod # https://docs.python.org/3/builtins/functions.html#staticmethod
+    def total_price(expenses):
+        """ Adds up the expenses amount in a list. """
+        return sum(expense.amount for expense in expenses)
+
     
