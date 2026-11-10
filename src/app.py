@@ -23,6 +23,14 @@ class ExpenseTrackerApp:
             try:
                 return datetime.strptime(text, "%Y-%m-%d").date()
             except ValueError:
-                print("Please use the format YYYY-MM-DD. For example, 2026-09-22")
+                print("Please use the format YYYY-MM-DD. For example, 2026-09-22.")
+
+    def ask_amount(self):
+        """ Asks user for expense amount. """
+        while True:
+            try:
+                return float(input("Amount: "))
+            except ValueError:
+                print("Please enter a number. For example, 13.55.")
 
     
