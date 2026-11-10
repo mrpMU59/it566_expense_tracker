@@ -120,4 +120,19 @@ class ExpenseTrackerApp:
         except OSError as error:
             print("Could not export: ", error)
 
-    
+
+    def run_app(self):
+        actions = {"1": self.add_expense, "2": self.view_expenses, "3": self.open_file,
+                   "4": self.save_file, "5": self.export_csv}
+
+        while True:
+            self.show_menu()
+            choice = input("Choose an option (1-6): ").strip()
+
+            if choice == "6":
+                print("Goodbye!")
+                break
+            elif choice in actions:
+                actions[choice]()
+            else:
+                print("Invalid choice. Please type a number from 1 to 6.")
