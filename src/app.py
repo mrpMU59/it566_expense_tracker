@@ -58,4 +58,16 @@ class ExpenseTrackerApp:
         print("5. Export expenses to CSV (for Excel)")
         print("6. Quit")
 
+    def add_expense(self):
+        expense_date = self.ask_date("Date (YYYY-MM-DD): ", required=True)
+        category = input("Category: ").strip()
+        description = input("Description: ").strip()
+        amount = self.ask_amount()
+
+        expense = Expense(expense_date, category, description, amount)
+
+        self.manager.add_expense(expense)
+
+        print("Expense added!")
+
     
