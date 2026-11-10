@@ -33,4 +33,12 @@ class ExpenseTrackerApp:
             except ValueError:
                 print("Please enter a number. For example, 13.55.")
 
+    def ask_filters(self):
+        """ Asks user for optional filters. """
+        print("Leave a filter blank to skip it (press Enter).")
+
+        start = self.ask_date("Start date (YYYY-MM-DD): ")
+        end = self.ask_date("End date (YYYY-MM-DD): ")
+        category = input("Category: ").strip()
+        return start, end, category
     
