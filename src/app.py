@@ -41,4 +41,10 @@ class ExpenseTrackerApp:
         end = self.ask_date("End date (YYYY-MM-DD): ")
         category = input("Category: ").strip()
         return start, end, category
+
+    def ask_filename(self, prompt, default):
+        """ Asks user for a file name. """
+        name = input(f"{prompt} (press Enter for {default}): ").strip()
+        return name if name else default
+
     
