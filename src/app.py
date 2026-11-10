@@ -70,4 +70,21 @@ class ExpenseTrackerApp:
 
         print("Expense added!")
 
-    
+    def view_expenses(self):
+        start, end, category = self.ask_filters()
+        matches = self.manager.filter(start, end, category)
+        self.print_expenses(matches)
+
+    def print_expenses(self, expenses):
+        if not expenses:
+            print("No expenses to show.")
+            return
+        print()
+        print("Date         Category        Description         Amount")
+        print("-" * 60)
+        for expense in expenses:
+            print(expense)
+        print("-" * 60)
+        print(f"Total: {self.manager.total(expenses):.2f}")
+
+        
