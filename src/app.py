@@ -101,4 +101,11 @@ class ExpenseTrackerApp:
         self.manager.replace_all(expenses)
         print(f"Loaded {len(self.manager)} expenses.")
 
-    
+    def save_file(self):
+        filename = self.ask_filename("Save as", DEFAULT_JSON)
+        try: 
+            JSONFileHandler(filename).save(self.manager.return_all())
+            print(f"Saved {len(self.manager)} expenses to {os.path.abspath(filename)}") # https://docs.python.org/3/library/os.path.html#os.path.abspath
+        except OSError as error:
+            print("Could not save file: ", error)
+
