@@ -72,7 +72,7 @@ class ExpenseTrackerApp:
 
     def view_expenses(self):
         start, end, category = self.ask_filters()
-        matches = self.manager.filter(start, end, category)
+        matches = self.manager.filter_expenses(start, end, category)
         self.print_expenses(matches)
 
     def print_expenses(self, expenses):
@@ -85,12 +85,12 @@ class ExpenseTrackerApp:
         for expense in expenses:
             print(expense)
         print("-" * 60)
-        print(f"Total: {self.manager.total(expenses):.2f}")
+        print(f"Total: {self.manager.total_price(expenses):.2f}")
 
     def open_file(self):
         filename = self.ask_filename("File to open", DEFAULT_JSON)
         try:
-            expenses = JSONFileHandler(filename).load()
+            expenses = JSONFileHandler(filename).load_expenses()
         except FileNotFoundError:
             print("File not found: ", filename)
             return
@@ -104,7 +104,7 @@ class ExpenseTrackerApp:
     def save_file(self):
         filename = self.ask_filename("Save as", DEFAULT_JSON)
         try: 
-            JSONFileHandler(filename).save(self.manager.return_all())
+            JSONFileHandler(filename).save_expenses(self.manager.return_all())
             print(f"Saved {len(self.manager)} expenses to {os.path.abspath(filename)}") # https://docs.python.org/3/library/os.path.html#os.path.abspath
         except OSError as error:
             print("Could not save file: ", error)
@@ -112,10 +112,10 @@ class ExpenseTrackerApp:
     def export_csv(self):
         filename = self.ask_filename("CSV file name", DEFAULT_CSV)
         start, end, category = self.ask_filters()
-        matches = self.manager.filter(start, end, category)
+        matches = self.manager.filter_expenses(start, end, category)
 
         try:
-            CSVExporter(filename).export(matches)
+            CSVExporter(filename).export_expenses(matches)
             print(f"Exported {len(matches)} expenses to {os.path.abspath(filename)}") # https://docs.python.org/3/library/os.path.html#os.path.abspath
         except OSError as error:
             print("Could not export: ", error)

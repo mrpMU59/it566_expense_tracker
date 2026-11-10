@@ -28,7 +28,7 @@ class ExpenseManager:
                 continue
             if end_date is not None and expense.date > end_date:
                 continue
-            if category and expense.category.lower() != category.lower: # Computer Scripting Techniques with Python (1st ed.), Ch 3.2.1
+            if category and expense.category.lower() != category.lower(): # Computer Scripting Techniques with Python (1st ed.), Ch 3.2.1
                 continue
             results.append(expense)
 
