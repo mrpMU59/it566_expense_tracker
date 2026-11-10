@@ -20,6 +20,7 @@ class JSONFileHandler:
 
     def load_expenses(self):
         """ Reads the JSON file and returns a list of Expense objects. """
+        """ AI was used for defining and differentiating the types of errors. """
         with open(self.filename, "r") as file:
             try:
                 data = json.load(file) # https://www.geeksforgeeks.org/python/reading-and-writing-json-to-a-file-in-python/
