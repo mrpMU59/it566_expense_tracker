@@ -32,4 +32,13 @@ class JSONFileHandler:
         except (KeyError, TypeError): # https://docs.python.org/3/builtins/exceptions.html#TypeError
             raise ValueError("The file has missing or incorrect expense data.")
 
-    
+
+class CSVExporter:
+    """ Exports a list of Expense objects to a CSV file for Excel. """
+
+    HEADINGS = ["Date", "Category", "Description", "Amount"] # Computer Scripting Techniques with Python (1st ed.), Ch 11.2.3
+
+    def __init__(self, filename):
+        self.filename = filename
+
+        
