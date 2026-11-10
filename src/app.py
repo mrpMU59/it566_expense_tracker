@@ -87,4 +87,18 @@ class ExpenseTrackerApp:
         print("-" * 60)
         print(f"Total: {self.manager.total(expenses):.2f}")
 
-        
+    def open_file(self):
+        filename = self.ask_filename("File to open", DEFAULT_JSON)
+        try:
+            expenses = JSONFileHandler(filename).load()
+        except FileNotFoundError:
+            print("File not found: ", filename)
+            return
+        except ValueError as error:
+            print("Could not open file: ", error)
+            return
+
+        self.manager.replace_all(expenses)
+        print(f"Loaded {len(self.manager)} expenses.")
+
+    
