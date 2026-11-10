@@ -14,4 +14,15 @@ class ExpenseTrackerApp:
     def __init__(self):
         self.manager = ExpenseManager()
 
+    def ask_date(self, prompt, required=False):
+        """ Asks user for a date. """
+        while True:
+            text= input(prompt).strip()
+            if text == "" and not required:
+                return None
+            try:
+                return datetime.strptime(text, "%Y-%m-%d").date()
+            except ValueError:
+                print("Please use the format YYYY-MM-DD. For example, 2026-09-22")
+
     
