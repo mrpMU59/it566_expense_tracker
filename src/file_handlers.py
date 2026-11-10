@@ -41,4 +41,12 @@ class CSVExporter:
     def __init__(self, filename):
         self.filename = filename
 
-        
+    def export_expenses(self, expenses):
+        """ Write expenses to the CSV file. """
+        with open(self.filename, "w", newline="") as file:
+            writer = csv.writer(file) # https://docs.python.org/3/library/csv.html#csv.writer
+            writer.writerow(self.HEADINGS) # https://docs.python.org/3/library/csv.html#csv.writer
+            for expense in expenses:
+                writer.writerow([expense.date.isoformat(), expense.category, expense.description, expense.amount])
+
+    
